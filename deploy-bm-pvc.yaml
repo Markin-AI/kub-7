@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-bm-pvc
+spec:
+  selector:
+    matchLabels:
+      app: busy-multi
+  template:
+    metadata:
+      labels:
+        app: busy-multi
+    spec:
+      containers:
+      - name: multitool
+        image: wbitt/network-multitool
+        volumeMounts:
+        - name: testvolume
+          mountPath: /opt/testvolume1
+        
+      - name: busybox
+        image: busybox:latest
+        command: ['sh','-c','while true; do echo "$(date) - test write" >> /opt/testvolume2/test.txt; sleep 5; done']
+        volumeMounts:
+        - name: testvolume
+          mountPath: /opt/testvolume2
+      volumes:
+        - name: testvolume
+          persistentVolumeClaim:
+            claimName: mypvc
+            
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mypvc
+spec:
+  storageClassName: host-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
