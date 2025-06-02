@@ -14,18 +14,18 @@
 2. Создать [PV](https://github.com/Markin-AI/kub-7/blob/main/bm-pv.yaml) и [PVC](https://github.com/Markin-AI/kub-7/blob/main/deploy-bm-pvc.yaml) для подключения папки на локальной ноде, которая будет использована в поде.
 3. Продемонстрировать, что multitool может читать файл, в который busybox пишет каждые пять секунд в общей директории.
 
-![1](https://github.com/Markin-AI/kub-6/blob/main/img/1.png)
+![1](https://github.com/Markin-AI/kub-7/blob/main/img/1.png)
  
 4. Удалить Deployment и PVC. Продемонстрировать, что после этого произошло с PV. Пояснить, почему.
 
-![2](https://github.com/Markin-AI/kub-6/blob/main/img/2.png)
+![2](https://github.com/Markin-AI/kub-7/blob/main/img/2.png)
 
 После удаления PVC, PV сменил статус с Bound на Released, так как больше не свзан с PVC.
 
 5. Продемонстрировать, что файл сохранился на локальном диске ноды. Удалить PV.  Продемонстрировать что произошло с файлом после удаления PV. Пояснить, почему.
 
 
-![3](https://github.com/Markin-AI/kub-6/blob/main/img/3.png)
+![3](https://github.com/Markin-AI/kub-7/blob/main/img/3.png)
 
 Политика Reclaim Policy: Retain сохраняет файлы даже после удаления PV.
 
@@ -48,9 +48,9 @@
 3. Продемонстрировать возможность чтения и записи файла изнутри пода. 
 4. Предоставить манифесты, а также скриншоты или вывод необходимых команд.
 
-![4](https://github.com/Markin-AI/kub-6/blob/main/img/4.png)
+![4](https://github.com/Markin-AI/kub-7/blob/main/img/4.png)
 
-![5](https://github.com/Markin-AI/kub-6/blob/main/img/5.png)
+![5](https://github.com/Markin-AI/kub-7/blob/main/img/5.png)
 
 [Deployment + PVC](https://github.com/Markin-AI/kub-7/blob/main/deploy-m-pvc.yaml)
 
